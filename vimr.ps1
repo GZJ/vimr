@@ -81,7 +81,7 @@ nnoremap <buffer> Q :qa!<Enter>
 set splitbelow
 let g:buf =  term_start(g:vimr_shell, {'term_name': 'vimr'})
 call term_sendkeys(g:buf, "cd " . expand('%:p:h') . "\<CR>")
-execute "normal! \<C-w>p" 
+execute "normal! \<C-w>p"
 "@  -NoNewline
 
-vim --clean  -c "source $tempFilePath"
+vim --clean -c "source $tempFilePath"
