@@ -56,7 +56,7 @@ endfunction
 
 function! Vimr(commands)
     for cmd in a:commands
-        if g:vimr_data_src == "ls"
+        if g:vimr_data_src == "ls" || g:vimr_data_src == "args"
             let cmd = "./" . cmd
         endif
         call term_sendkeys(g:buf, cmd . "\<CR>")
