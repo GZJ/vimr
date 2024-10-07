@@ -30,7 +30,10 @@ endfunction
 function! VimrList()
     let current_directory = expand('%:p:h')
     let vimr_file = current_directory . '/vimr'
-    if CheckVimrFile()
+    if argc() > 0
+        let lines = argv()
+        let g:vimr_data_src = "args"
+    elseif CheckVimrFile()
         let result = readfile(vimr_file)
         let lines = result
         let g:vimr_data_src = "vimr"
@@ -46,8 +49,7 @@ function! VimrList()
         endif
 
         let lines = split(result, '\n')
-        "let lines = map(lines, '"./" . v:val')
-        let g:vimr_data_src = "files"
+        let g:vimr_data_src = "ls"
     endif
 
     enew 
@@ -57,7 +59,7 @@ endfunction
 
 function! Vimr(commands)
     for cmd in a:commands
-        if g:vimr_data_src == "files"
+        if g:vimr_data_src == "ls"
             let cmd = "./" . cmd
         endif
         call term_sendkeys(g:buf, cmd . "\<CR>")
@@ -84,4 +86,4 @@ call term_sendkeys(g:buf, "cd " . expand('%:p:h') . "\<CR>")
 execute "normal! \<C-w>p"
 "@  -NoNewline
 
-vim --clean -c "source $tempFilePath"
+vim --clean -c "source $tempFilePath" -- $args
