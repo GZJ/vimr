@@ -87,4 +87,4 @@ call term_sendkeys(g:buf, "cd " . expand('%:p:h') . "\<CR>")
 execute "normal! \<C-w>p"
 EOF
 
-vim --clean  -c "source $tmpfile"
+vim --clean  -c "source $tmpfile"  "$@"

@@ -86,4 +86,4 @@ call term_sendkeys(g:buf, "cd " . expand('%:p:h') . "\<CR>")
 execute "normal! \<C-w>p"
 "@  -NoNewline
 
-vim --clean -c "source $tempFilePath"
+vim --clean -c "source $tempFilePath" -- $args

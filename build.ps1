@@ -8,7 +8,7 @@ Set-Content -Path `$tempFilePath -Value @"
 $content
 `"@  -NoNewline
 
-vim --clean -c "source `$tempFilePath"
+vim --clean -c "source `$tempFilePath" -- `$args
 "@
 
 $scriptPath = "vimr.ps1"
@@ -23,7 +23,7 @@ cat << EOF > "`$tmpfile"
 $content
 EOF
 
-vim --clean  -c "source `$tmpfile"
+vim --clean  -c "source `$tmpfile"  "$@"
 "@
 
 $scriptPath = "vimr.sh"
