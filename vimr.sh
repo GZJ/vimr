@@ -80,7 +80,7 @@ call VimrList()
 :setlocal cursorline
 :setlocal nomodifiable
 nnoremap <buffer> <Enter> :call Vimrr()<Enter>
-nnoremap <buffer> Q :qa!<Enter>
+nnoremap <buffer> q :qa!<Enter>
 set splitbelow
 let g:buf =  term_start(g:vimr_shell, {'term_name': 'vimr'})
 call term_sendkeys(g:buf, "cd " . expand('%:p:h') . "\<CR>")
